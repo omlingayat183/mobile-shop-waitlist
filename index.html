@@ -85,12 +85,18 @@
 
   <script>
     // ================== CONFIGURATION ==================
-    const SUPABASE_URL = 'https://yjpoeisdelikwbhntwqe.supabase.co';           // ← YOUR PROJECT URL
-    const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';   // ← YOUR KEY
+    const SUPABASE_URL = 'https://yjpoeisdelikwbhntwqe.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';
     // ===================================================
 
-    // Create client only once
-    const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Safe client creation (prevents duplicate declaration error)
+    let supabase;
+    if (typeof window.supabaseClient === 'undefined') {
+      supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      window.supabaseClient = supabase;   // Store globally to avoid re-declaration
+    } else {
+      supabase = window.supabaseClient;
+    }
 
     document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
       e.preventDefault();
