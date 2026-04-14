@@ -19,7 +19,7 @@
     <div class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Mobile Shop Management System</h1>
       <p class="text-3xl text-emerald-400 mb-6">Stop Losing Money on Stock Mismatch</p>
-      <p class="text-xl max-w-2xl mx-auto">A simple mobile app made for Indian mobile shops — Track IMEI, accessories, billing, employees & multi-shops in one place.</p>
+      <p class="text-xl max-w-2xl mx-auto">A simple mobile app made for Indian mobile shops.</p>
       <div class="mt-10">
         <a href="#waitlist" class="bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-2xl font-semibold text-xl inline-block">
           Join Waiting List (Free Early Access)
@@ -27,45 +27,42 @@
       </div>
     </div>
 
-    <!-- Problems Section -->
+    <!-- Problems -->
     <div class="mb-20">
       <h2 class="text-4xl font-bold text-center mb-4">Are These Your Daily Problems?</h2>
-      <p class="text-center text-slate-400 mb-12 text-lg">Most mobile shop owners still use notebooks and Excel.</p>
-      
       <div class="grid md:grid-cols-2 gap-6">
         <div class="space-y-6">
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Accessories have no barcode</strong><br><span class="text-slate-400">Stock mismatch every month</span></div>
+            <div><strong>Accessories stock mismatch</strong><br><span class="text-slate-400">No barcode tracking</span></div>
           </div>
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>IMEI tracking is manual</strong><br><span class="text-slate-400">Warranty & verification problems</span></div>
+            <div><strong>Manual IMEI tracking</strong><br><span class="text-slate-400">Warranty issues</span></div>
           </div>
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Billing & stock not connected</strong><br><span class="text-slate-400">Sell but forget to reduce stock</span></div>
+            <div><strong>Billing not linked with stock</strong></div>
           </div>
         </div>
-
         <div class="space-y-6">
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>No low stock alert</strong><br><span class="text-slate-400">Items finish without warning</span></div>
+            <div><strong>No low stock alert</strong></div>
           </div>
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Employees see profit</strong><br><span class="text-slate-400">Not safe</span></div>
+            <div><strong>Employees see profit</strong></div>
           </div>
           <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Multiple shops = chaos</strong><br><span class="text-slate-400">No combined view</span></div>
+            <div><strong>Multiple shops = multiple notebooks</strong></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Waitlist -->
+    <!-- Waitlist Form -->
     <div id="waitlist" class="bg-slate-900 rounded-3xl p-10">
       <h2 class="text-3xl font-semibold text-center mb-4">Join the Waiting List</h2>
       <p class="text-center text-emerald-400 mb-8">First 500 shops get lifetime 50% discount</p>
@@ -89,9 +86,10 @@
   <script>
     // ================== CONFIGURATION ==================
     const SUPABASE_URL = 'https://yjpoeisdelikwbhntwqe.supabase.co';           // ← YOUR PROJECT URL
-    const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';   // ← YOUR PUBLISHABLE KEY
+    const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';   // ← YOUR KEY
     // ===================================================
 
+    // Create client only once
     const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
@@ -101,11 +99,11 @@
       btn.innerHTML = 'Saving...';
 
       const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        shop_name: document.getElementById('shop_name').value,
-        city: document.getElementById('city').value,
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        shop_name: document.getElementById('shop_name').value.trim(),
+        city: document.getElementById('city').value.trim(),
         num_shops: 1,
         message: ''
       };
@@ -117,7 +115,7 @@
         console.error(error);
       } else {
         document.getElementById('successMsg').classList.remove('hidden');
-        document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the list.`;
+        document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
         document.getElementById('waitlistForm').reset();
       }
 
