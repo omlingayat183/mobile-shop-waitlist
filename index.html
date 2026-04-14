@@ -89,17 +89,13 @@
     const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';
     // ===================================================
 
-    // Safe client creation (prevents duplicate declaration error)
-    let supabase;
-    if (typeof window.supabaseClient === 'undefined') {
-      supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      window.supabaseClient = supabase;   // Store globally to avoid re-declaration
-    } else {
-      supabase = window.supabaseClient;
-    }
+    // Safe initialization to prevent duplicate declaration
+    const supabase = window.supabase || Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window.supabase = supabase;   // Store it globally
 
     document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
       e.preventDefault();
+      
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.innerHTML = 'Saving...';
@@ -114,15 +110,20 @@
         message: ''
       };
 
-      const { error } = await supabase.from('waiting_list').insert([data]);
+      try {
+        const { error } = await supabase.from('waiting_list').insert([data]);
 
-      if (error) {
-        alert('Error: ' + error.message);
-        console.error(error);
-      } else {
-        document.getElementById('successMsg').classList.remove('hidden');
-        document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
-        document.getElementById('waitlistForm').reset();
+        if (error) {
+          alert('Error: ' + error.message);
+          console.error(error);
+        } else {
+          document.getElementById('successMsg').classList.remove('hidden');
+          document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
+          document.getElementById('waitlistForm').reset();
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+        console.error(err);
       }
 
       btn.disabled = false;
