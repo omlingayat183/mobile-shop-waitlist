@@ -90,45 +90,54 @@
     // ===================================================
 
     // Safe initialization to prevent duplicate declaration
-    const supabase = window.supabase || Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    window.supabase = supabase;   // Store it globally
+    // const supabase = window.supabase || Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // window.supabase = supabase;   // Store it globally
 
-    document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+    //   e.preventDefault();
       
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.innerHTML = 'Saving...';
+    //   const btn = document.getElementById('submitBtn');
+    //   btn.disabled = true;
+    //   btn.innerHTML = 'Saving...';
 
-      const data = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        shop_name: document.getElementById('shop_name').value.trim(),
-        city: document.getElementById('city').value.trim(),
-        num_shops: 1,
-        message: ''
-      };
+    //   const data = {
+    //     name: document.getElementById('name').value.trim(),
+    //     email: document.getElementById('email').value.trim(),
+    //     phone: document.getElementById('phone').value.trim(),
+    //     shop_name: document.getElementById('shop_name').value.trim(),
+    //     city: document.getElementById('city').value.trim(),
+    //     num_shops: 1,
+    //     message: ''
+    //   };
 
-      try {
-        const { error } = await supabase.from('waiting_list').insert([data]);
+    //   try {
+    //     const { error } = await supabase.from('waiting_list').insert([data]);
 
-        if (error) {
-          alert('Error: ' + error.message);
-          console.error(error);
-        } else {
-          document.getElementById('successMsg').classList.remove('hidden');
-          document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
-          document.getElementById('waitlistForm').reset();
-        }
-      } catch (err) {
-        alert('Something went wrong. Please try again.');
-        console.error(err);
-      }
+    //     if (error) {
+    //       alert('Error: ' + error.message);
+    //       console.error(error);
+    //     } else {
+    //       document.getElementById('successMsg').classList.remove('hidden');
+    //       document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
+    //       document.getElementById('waitlistForm').reset();
+    //     }
+    //   } catch (err) {
+    //     alert('Something went wrong. Please try again.');
+    //     console.error(err);
+    //   }
 
-      btn.disabled = false;
-      btn.innerHTML = 'Yes, Add Me to Waiting List';
-    });
+    //   btn.disabled = false;
+    //   btn.innerHTML = 'Yes, Add Me to Waiting List';
+    // });
+
+    if (!window.supabaseClient) {
+  window.supabaseClient = Supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+}
+
+const supabase = window.supabaseClient;
   </script>
 </body>
 </html>
