@@ -1,143 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Shop Manager • Stop Stock Loss</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Shop Management System | Stop Losing Money on Stock Mismatch</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    html { scroll-behavior: smooth; }
     body { font-family: system-ui, -apple-system, sans-serif; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-200">
+<body class="bg-slate-950 text-slate-100">
 
-  <div class="max-w-5xl mx-auto px-6 py-12">
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+    <span class="inline-block px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-6">
+      Built Specifically for Indian Mobile Shop Owners
+    </span>
 
-    <!-- Hero -->
-    <div class="text-center mb-16">
-      <h1 class="text-5xl font-bold mb-4">Mobile Shop Management System</h1>
-      <p class="text-3xl text-emerald-400 mb-6">Stop Losing Money on Stock Mismatch</p>
-      <p class="text-xl max-w-2xl mx-auto">A simple mobile app made for Indian mobile shops.</p>
-      <div class="mt-10">
-        <a href="#waitlist" class="bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-2xl font-semibold text-xl inline-block">
-          Join Waiting List (Free Early Access)
-        </a>
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight max-w-5xl mx-auto">
+      Stop Losing Money Due To
+      <span class="text-emerald-400">Stock Mismatch</span>
+      In Your Mobile Shop
+    </h1>
+
+    <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+      Manage inventory, IMEI tracking, billing, employees, low stock alerts,
+      and multiple shops from one powerful system designed specifically for
+      mobile retailers.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#waitlist"
+         class="bg-emerald-500 hover:bg-emerald-600 px-8 py-4 rounded-2xl font-semibold text-lg">
+        Join Early Access Waitlist
+      </a>
+
+      <span class="px-8 py-4 rounded-2xl border border-slate-700 text-slate-300">
+        First 500 Shops Get Lifetime 50% Discount
+      </span>
+    </div>
+  </section>
+
+  <!-- PROBLEMS -->
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+      Are These Problems Costing You Money Every Month?
+    </h2>
+    <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+      Most mobile shops still manage operations using notebooks, Excel sheets,
+      or generic billing software not built for mobile retail.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-slate-900 p-6 rounded-2xl">Accessories stock never matches physical stock</div>
+      <div class="bg-slate-900 p-6 rounded-2xl">IMEI numbers managed manually in notebooks</div>
+      <div class="bg-slate-900 p-6 rounded-2xl">Billing does not reduce inventory automatically</div>
+      <div class="bg-slate-900 p-6 rounded-2xl">No low stock alert before products run out</div>
+      <div class="bg-slate-900 p-6 rounded-2xl">Employees can access sensitive profit data</div>
+      <div class="bg-slate-900 p-6 rounded-2xl">Managing multiple shops is chaotic</div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="bg-slate-900/40 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Built Specifically For Mobile Shop Owners
+      </h2>
+      <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">
+        Unlike generic billing software, this system is designed around how
+        real mobile shops operate.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">IMEI Tracking</h3>
+          <p class="text-slate-400">Track every mobile phone individually by IMEI.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">Accessory Stock Management</h3>
+          <p class="text-slate-400">Track non-barcoded accessories by quantity.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">Billing + Inventory Sync</h3>
+          <p class="text-slate-400">Every bill automatically updates stock.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">Employee Permissions</h3>
+          <p class="text-slate-400">Restrict access to profit/loss and reports.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">Low Stock Alerts</h3>
+          <p class="text-slate-400">Get notified before products run out.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl">
+          <h3 class="font-semibold text-emerald-400 mb-2">Multi-Shop Dashboard</h3>
+          <p class="text-slate-400">Manage all branches from one system.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Problems -->
-    <div class="mb-20">
-      <h2 class="text-4xl font-bold text-center mb-4">Are These Your Daily Problems?</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="space-y-6">
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Accessories stock mismatch</strong><br><span class="text-slate-400">No barcode tracking</span></div>
-          </div>
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Manual IMEI tracking</strong><br><span class="text-slate-400">Warranty issues</span></div>
-          </div>
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Billing not linked with stock</strong></div>
-          </div>
-        </div>
-        <div class="space-y-6">
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>No low stock alert</strong></div>
-          </div>
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Employees see profit</strong></div>
-          </div>
-          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
-            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
-            <div><strong>Multiple shops = multiple notebooks</strong></div>
-          </div>
-        </div>
+  <!-- HOW IT WORKS -->
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+      How It Works
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="text-emerald-400 text-4xl font-bold mb-4">1</div>
+        <h3 class="font-semibold mb-2">Add Products & Stock</h3>
+        <p class="text-slate-400">Add mobiles, accessories, IMEI numbers, and stock quantity.</p>
+      </div>
+
+      <div>
+        <div class="text-emerald-400 text-4xl font-bold mb-4">2</div>
+        <h3 class="font-semibold mb-2">Sell Product & Generate Bill</h3>
+        <p class="text-slate-400">Billing automatically links to stock deduction.</p>
+      </div>
+
+      <div>
+        <div class="text-emerald-400 text-4xl font-bold mb-4">3</div>
+        <h3 class="font-semibold mb-2">Track Reports & Inventory</h3>
+        <p class="text-slate-400">Monitor sales, stock, profit, and alerts instantly.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Waitlist Form -->
-    <div id="waitlist" class="bg-slate-900 rounded-3xl p-10">
-      <h2 class="text-3xl font-semibold text-center mb-4">Join the Waiting List</h2>
-      <p class="text-center text-emerald-400 mb-8">First 500 shops get lifetime 50% discount</p>
-      
-      <form id="waitlistForm" class="max-w-md mx-auto space-y-6">
-        <input type="text" id="name" placeholder="Full Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
-        <input type="email" id="email" placeholder="Email *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
-        <input type="tel" id="phone" placeholder="WhatsApp Number *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
-        <input type="text" id="shop_name" placeholder="Shop Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
-        <input type="text" id="city" value="Pune" placeholder="City *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
-        
-        <button type="submit" id="submitBtn" class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-2xl font-semibold text-lg">
-          Yes, Add Me to Waiting List
+  <!-- WAITLIST -->
+  <section id="waitlist" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="bg-slate-900 rounded-3xl p-10 shadow-2xl">
+      <h2 class="text-3xl font-bold text-center mb-3">
+        Join The Early Access Waitlist
+      </h2>
+
+      <p class="text-center text-emerald-400 mb-8">
+        Help Shape The Product + Get Lifetime 50% Discount
+      </p>
+
+      <form id="waitlistForm" class="grid md:grid-cols-2 gap-4">
+        <input id="name" type="text" placeholder="Full Name" required class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+        <input id="phone" type="tel" placeholder="WhatsApp Number" required class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+        <input id="email" type="email" placeholder="Email" required class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+        <input id="shop_name" type="text" placeholder="Shop Name" required class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+        <input id="city" type="text" placeholder="City" required class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+
+        <select id="num_shops" class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+          <option value="1">1 Shop</option>
+          <option value="2">2-5 Shops</option>
+          <option value="6">6+ Shops</option>
+        </select>
+
+        <textarea id="problem"
+          placeholder="Biggest Problem You Face Managing Your Shop"
+          class="md:col-span-2 p-4 rounded-xl bg-slate-800 border border-slate-700"
+          rows="4"></textarea>
+
+        <button id="submitBtn"
+          type="submit"
+          class="md:col-span-2 bg-emerald-500 hover:bg-emerald-600 p-4 rounded-xl font-semibold text-lg">
+          Join Waiting List
         </button>
       </form>
-    </div>
 
-    <p id="successMsg" class="hidden text-center text-emerald-400 text-2xl font-medium mt-10"></p>
-  </div>
+      <p id="successMsg" class="hidden mt-6 text-center text-emerald-400 font-medium"></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-slate-500 border-t border-slate-800">
+    Built for Mobile Retailers • Launching Soon
+  </footer>
 
   <script>
-    // ================== CONFIGURATION ==================
-    const SUPABASE_URL = 'https://yjpoeisdelikwbhntwqe.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';
-    // ===================================================
+    const SUPABASE_URL = "https://yjpoeisdelikwbhntwqe.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J";
 
-    // Safe initialization to prevent duplicate declaration
-    // const supabase = window.supabase || Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    // window.supabase = supabase;   // Store it globally
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
 
-    // document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
-    //   e.preventDefault();
-      
-    //   const btn = document.getElementById('submitBtn');
-    //   btn.disabled = true;
-    //   btn.innerHTML = 'Saving...';
+    document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    //   const data = {
-    //     name: document.getElementById('name').value.trim(),
-    //     email: document.getElementById('email').value.trim(),
-    //     phone: document.getElementById('phone').value.trim(),
-    //     shop_name: document.getElementById('shop_name').value.trim(),
-    //     city: document.getElementById('city').value.trim(),
-    //     num_shops: 1,
-    //     message: ''
-    //   };
+      const btn = document.getElementById("submitBtn");
+      btn.disabled = true;
+      btn.innerText = "Saving...";
 
-    //   try {
-    //     const { error } = await supabase.from('waiting_list').insert([data]);
+      const data = {
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        shop_name: document.getElementById("shop_name").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        num_shops: parseInt(document.getElementById("num_shops").value),
+        biggest_problem: document.getElementById("problem").value.trim()
+      };
 
-    //     if (error) {
-    //       alert('Error: ' + error.message);
-    //       console.error(error);
-    //     } else {
-    //       document.getElementById('successMsg').classList.remove('hidden');
-    //       document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
-    //       document.getElementById('waitlistForm').reset();
-    //     }
-    //   } catch (err) {
-    //     alert('Something went wrong. Please try again.');
-    //     console.error(err);
-    //   }
+      const { error } = await supabaseClient
+        .from("waiting_list")
+        .insert([data]);
 
-    //   btn.disabled = false;
-    //   btn.innerHTML = 'Yes, Add Me to Waiting List';
-    // });
+      if (error) {
+        alert(error.message);
+      } else {
+        document.getElementById("successMsg").classList.remove("hidden");
+        document.getElementById("successMsg").innerText =
+          "Thank you. You have been added to the waiting list.";
+        document.getElementById("waitlistForm").reset();
+      }
 
-    if (!window.supabaseClient) {
-  window.supabaseClient = Supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
-  );
-}
-
-const supabase = window.supabaseClient;
+      btn.disabled = false;
+      btn.innerText = "Join Waiting List";
+    });
   </script>
+
 </body>
 </html>
