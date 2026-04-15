@@ -14,9 +14,12 @@
 <body class="bg-slate-950 text-slate-200">
 
   <div class="max-w-5xl mx-auto px-6 py-12">
+
+    <!-- Hero -->
     <div class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Mobile Shop Management System</h1>
       <p class="text-3xl text-emerald-400 mb-6">Stop Losing Money on Stock Mismatch</p>
+      <p class="text-xl max-w-2xl mx-auto">A simple mobile app made for Indian mobile shops.</p>
       <div class="mt-10">
         <a href="#waitlist" class="bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-2xl font-semibold text-xl inline-block">
           Join Waiting List (Free Early Access)
@@ -24,14 +27,52 @@
       </div>
     </div>
 
-    <div id="waitlist" class="bg-slate-900 rounded-3xl p-10 max-w-md mx-auto">
-      <h2 class="text-3xl font-semibold text-center mb-6">Join the Waiting List</h2>
-      <form id="waitlistForm" class="space-y-6">
-        <input type="text" id="name" placeholder="Full Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700">
-        <input type="email" id="email" placeholder="Email *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700">
-        <input type="tel" id="phone" placeholder="WhatsApp Number *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700">
-        <input type="text" id="shop_name" placeholder="Shop Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700">
-        <input type="text" id="city" value="Pune" placeholder="City *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700">
+    <!-- Problems -->
+    <div class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-4">Are These Your Daily Problems?</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-6">
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>Accessories stock mismatch</strong><br><span class="text-slate-400">No barcode tracking</span></div>
+          </div>
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>Manual IMEI tracking</strong><br><span class="text-slate-400">Warranty issues</span></div>
+          </div>
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>Billing not linked with stock</strong></div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>No low stock alert</strong></div>
+          </div>
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>Employees see profit</strong></div>
+          </div>
+          <div class="flex gap-4 bg-slate-900 p-6 rounded-3xl">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-2xl mt-1"></i>
+            <div><strong>Multiple shops = multiple notebooks</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waitlist Form -->
+    <div id="waitlist" class="bg-slate-900 rounded-3xl p-10">
+      <h2 class="text-3xl font-semibold text-center mb-4">Join the Waiting List</h2>
+      <p class="text-center text-emerald-400 mb-8">First 500 shops get lifetime 50% discount</p>
+      
+      <form id="waitlistForm" class="max-w-md mx-auto space-y-6">
+        <input type="text" id="name" placeholder="Full Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <input type="email" id="email" placeholder="Email *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <input type="tel" id="phone" placeholder="WhatsApp Number *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <input type="text" id="shop_name" placeholder="Shop Name *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <input type="text" id="city" value="Pune" placeholder="City *" required class="w-full px-6 py-4 rounded-2xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
         
         <button type="submit" id="submitBtn" class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-2xl font-semibold text-lg">
           Yes, Add Me to Waiting List
@@ -43,20 +84,21 @@
   </div>
 
   <script>
-    // CONFIGURATION
+    // ================== CONFIGURATION ==================
     const SUPABASE_URL = 'https://yjpoeisdelikwbhntwqe.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_Rum2Mv45ELglFDJJVrxuvw_Ni8C7J_J';
+    // ===================================================
 
-    // Create client safely
-    const supabaseClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Safe initialization to prevent duplicate declaration
+    const supabase = window.supabase || Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window.supabase = supabase;   // Store it globally
 
-    // Form handling
     document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = 'Saving...';
+      btn.innerHTML = 'Saving...';
 
       const data = {
         name: document.getElementById('name').value.trim(),
@@ -69,21 +111,23 @@
       };
 
       try {
-        const { error } = await supabaseClient.from('waiting_list').insert([data]);
-        
+        const { error } = await supabase.from('waiting_list').insert([data]);
+
         if (error) {
           alert('Error: ' + error.message);
+          console.error(error);
         } else {
           document.getElementById('successMsg').classList.remove('hidden');
           document.getElementById('successMsg').innerHTML = `🎉 Thank you! You're on the waiting list.`;
           document.getElementById('waitlistForm').reset();
         }
       } catch (err) {
-        alert('Connection error. Please try again.');
+        alert('Something went wrong. Please try again.');
+        console.error(err);
       }
 
       btn.disabled = false;
-      btn.textContent = 'Yes, Add Me to Waiting List';
+      btn.innerHTML = 'Yes, Add Me to Waiting List';
     });
   </script>
 </body>
